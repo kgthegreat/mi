@@ -25,4 +25,9 @@ gem 'haml-rails'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'watchr'
+end
+
+group :test do
+  gem 'spork'
 end
