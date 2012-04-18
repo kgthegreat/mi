@@ -1,0 +1,14 @@
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp
+log
+public/javascripts/cache
+public/stylesheets/cache
+.bundle/
+*.sql.gz
+*.tmp
+.rvmrc
+.#*
+*#*
+*~
