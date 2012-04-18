@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Admin::DomainsController do
 
+  render_views
+
+
   describe "GET new" do
     it "should render the new template" do
       get :new
