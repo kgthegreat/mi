@@ -16,4 +16,19 @@ describe Admin::DomainsController do
       assigns[:domain].should be_new_record
     end
   end
+
+  describe "POST create" do
+    it "should create a new domain" do
+      lambda {
+        post :create, :domain => {:name => "Some domain"}
+      }.should change(Domain, :count).by(1)
+      
+    end
+
+    it "should not create a new domain if the name is missing" do
+      post :create, :domain => {:name => ""}
+      redirect_to new_admin_domain_path
+    end
+
+  end
 end
