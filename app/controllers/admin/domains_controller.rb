@@ -2,7 +2,7 @@ class Admin::DomainsController < ApplicationController
 
   respond_to :html
 
-  before_filter :find_domain, :only => [:edit,:update]
+  before_filter :find_domain, :only => [:edit,:update, :destroy]
   
   def new
     @domain = Domain.new
@@ -32,6 +32,12 @@ class Admin::DomainsController < ApplicationController
     else
       render :edit
     end  
+  end
+
+  def destroy
+    @domain.destroy
+    flash[:notice] = "Entry deleted"
+    redirect_to admin_domains_path
   end
 
   private

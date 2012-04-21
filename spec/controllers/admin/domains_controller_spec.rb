@@ -59,17 +59,33 @@ describe Admin::DomainsController do
   end
 
   describe "PUT update" do
-    before :each do
-      post :update, :id => @domain, :domain => {:name=> "someother"}      
-    end
 
     it "should update the domain in question" do
-      
+      post :update, :id => @domain, :domain => {:name=> "someother"}      
       @domain.reload.name.should eq "someother"
     end
     it "should render edit template if update fails" do
       post :update, :id => @domain, :domain => {:name=> ""}
       response.should render_template :edit
+    end
+  end
+
+  describe "DELETE destroy" do
+    it "should delete the domain" do
+      lambda {
+        delete :destroy, :id => @domain
+      }.should change(Domain, :count).by(-1)
+      
+    end
+
+    it "should inform the user of the deletion" do
+      delete :destroy, :id => @domain
+      flash[:notice].should include "Entry deleted"
+    end
+
+    it "should redirect to list of domains" do
+      delete :destroy, :id => @domain
+      response.should redirect_to admin_domains_path
     end
   end
 end

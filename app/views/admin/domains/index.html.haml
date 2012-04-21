@@ -2,7 +2,10 @@
   All domains
 
 - @domains.each do |domain|
-  = domain.name
+  .row
+    .span2= domain.name
+    = link_to "edit", edit_admin_domain_path(domain)
+    = link_to "delete", admin_domain_path(domain), :confirm=> "Are you sure", :method => "delete"
   .muted= domain.description
 
 =link_to "Add a domain", new_admin_domain_path, :class => "btn btn-primary"
