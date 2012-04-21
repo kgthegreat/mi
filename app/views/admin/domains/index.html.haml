@@ -1,0 +1,8 @@
+.page-header
+  All domains
+
+- @domains.each do |domain|
+  = domain.name
+  .muted= domain.description
+
+=link_to "Add a domain", new_admin_domain_path, :class => "btn btn-primary"
