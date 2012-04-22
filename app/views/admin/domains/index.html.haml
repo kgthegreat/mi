@@ -1,11 +1,18 @@
 .page-header
   All domains
 
-- @domains.each do |domain|
-  .row
-    .span2= domain.name
-    = link_to "edit", edit_admin_domain_path(domain)
-    = link_to "delete", admin_domain_path(domain), :confirm=> "Are you sure", :method => "delete"
-  .muted= domain.description
-
 =link_to "Add a domain", new_admin_domain_path, :class => "btn btn-primary"
+
+.well
+  - @domains.each do |domain|
+    .row
+      .span1= domain.name
+      .pull-right.btn-group
+        = link_to "edit", edit_admin_domain_path(domain), :class => "btn"
+        = link_to "add topics", "",:class => "btn"
+        = link_to "manage timeslots", "",:class => "btn"
+        = link_to "delete", admin_domain_path(domain), :confirm=> "Are you sure", :method => "delete", :class => "btn"
+    .muted= domain.description
+    %br
+
+
