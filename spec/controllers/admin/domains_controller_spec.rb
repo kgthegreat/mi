@@ -5,6 +5,8 @@ describe Admin::DomainsController do
   render_views
 
   before :each do
+    @admin_user = Admin.create!({:email=>"admin@admin.com", :password => "asd123"})
+    sign_in @admin_user
     @domain = Domain.create!({:name=>"somename"})
   end
   describe "GET new" do
