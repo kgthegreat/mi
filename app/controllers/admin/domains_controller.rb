@@ -1,8 +1,7 @@
-class Admin::DomainsController < ApplicationController
+class Admin::DomainsController < Admin::AdminController
 
   respond_to :html
 
-  before_filter :authenticate_admin!
   before_filter :find_domain, :only => [:edit,:update, :destroy]
   
   def new

@@ -1,7 +1,6 @@
-class Admin::TrainersController < ApplicationController
+class Admin::TrainersController < Admin::AdminController
   respond_to :html
 
-  before_filter :authenticate_admin!
   def create
     @trainer = Trainer.new(params[:trainer])
     if @trainer.save
