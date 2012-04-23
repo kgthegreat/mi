@@ -19,6 +19,38 @@ describe Admin::DomainsController do
       get :new
       assigns[:domain].should be_new_record
     end
+    
+    context "failure" do
+      context "for normal user" do
+        before :each do
+          sign_out @admin_user
+          @user = User.create!(:email => "hello@hello.com", :password => "password")
+          sign_in @user
+          get :index
+        end
+        it "should not be accessible to non admin user" do
+          response.should_not render_template :index
+        end
+        it "should be a redirect" do
+          response.should be_redirect
+        end
+      end
+      context "for trainers" do
+        before :each do
+          sign_out @admin_user
+          @trainer = Trainer.create!(:email => "hello@hello.com", :password => "password")
+          sign_in @trainer
+          get :index
+        end
+        it "should not be accessible to non admin user" do
+          response.should_not render_template :index
+        end
+        it "should be a redirect" do
+          response.should be_redirect
+        end
+      end
+    end
+
   end
 
   describe "POST create" do
