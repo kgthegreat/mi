@@ -2,20 +2,53 @@
 %html
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
-    %title= "MI"
+    %title
+      ADMIN |
+      = @current_page + " | " unless @current_page.nil?
     = stylesheet_link_tag 'application'
-    = javascript_include_tag "application"
     = csrf_meta_tags
     /[if IE]
       %script{:src => 'http://html5shim.googlecode.com/svn/trunk/html5.js', :type => 'text/javascript'}/
-    
     = yield :head
-
   %body
-    .container
-      - if notice
-        %p.notice= notice   
-      - if alert
-        %p.alert= alert
-      = yield 
- 
+    .page-wrapper
+      .navbar.admin
+        .navbar-inner
+          .container{:style=>"width:960px"}
+            %ul.nav.pull-right
+              - if admin_signed_in?
+                %li
+                  %a
+                    = "email"
+                %li= link_to 'logout', destroy_admin_session_path, :method => :get
+              - else
+                %li= link_to 'login', new_admin_session_path
+      .container.main{:style=>"padding-bottom:0"}
+        - unless flash[:notice].blank?
+          #notification
+            = flash[:notice]
+        #yield
+          .container
+            .row
+              .sidebar-area{:style=>"width:18%; float:left"}
+                %ul.unstyled
+                  %li{:class => current_page?(admin_domains_path) ? 'active' : ''}
+                    = link_to admin_domains_path do
+                      <i class="icon-off"></i> &nbsp;Domains
+                  %li{:class => current_page?(admin_trainers_path) ? 'active' : ''}
+                    = link_to admin_trainers_path do
+                      <i class="icon-user"></i> &nbsp;Trainers
+              .main-area{:style=>"width:80%; float:left; padding-left:2%"}
+                = content_for?(:content) ? yield(:content) : yield
+
+      .footer
+        .span12{:style=>"margin:0 auto; width:960px; float:none"}
+          .pull-left
+            %p
+              &copy; Some stuffs
+          %ul.unstyled.footer-links.pull-right
+            %li= link_to 'Domains', admin_domains_path
+            %li= link_to 'Trainers', admin_trainers_path
+          = yield :footer
+          = javascript_include_tag 'application'
+          = yield :javascript
