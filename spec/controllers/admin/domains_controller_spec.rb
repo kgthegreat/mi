@@ -48,6 +48,9 @@ describe Admin::DomainsController do
         it "should be a redirect" do
           response.should be_redirect
         end
+        it "should redirect to admin sign in page" do
+          response.should redirect_to new_admin_session_path
+        end
       end
     end
 
