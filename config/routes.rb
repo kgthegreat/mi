@@ -64,5 +64,6 @@ Mi::Application.routes.draw do
 
   namespace :admin do
     resources :domains
+    resources :trainers
   end
 end
