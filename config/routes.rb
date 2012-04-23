@@ -1,4 +1,8 @@
 Mi::Application.routes.draw do
+  devise_for :trainers
+
+  devise_for :admins
+
   devise_for :users
 
   # The priority is based upon order of creation:
