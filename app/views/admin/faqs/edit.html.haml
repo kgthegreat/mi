@@ -1,0 +1,13 @@
+.page-header
+  %h2 Create a faq
+
+.row
+  .span10
+    = form_for [:admin,@faq], :html => {:class => "form-horizontal"} do |form|
+      %fieldset
+        = render :partial => 'form', :locals => {:form => form}
+        .form-actions
+          = form.submit 'Update', :class => 'btn btn-primary'
+          = link_to 'Cancel', admin_faqs_path, :class => 'btn'
+
+

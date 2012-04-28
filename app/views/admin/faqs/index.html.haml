@@ -1,0 +1,16 @@
+.page-header
+  All faqs
+
+=link_to "Add a faq", new_admin_faq_path, :class => "btn btn-primary"
+
+.well
+  - @faqs.each do |faq|
+    .row
+      .span5= faq.question
+      .pull-right.btn-group
+        = link_to "edit", edit_admin_faq_path(faq), :class => "btn"
+        = link_to "delete", admin_faq_path(faq), :confirm=> "Are you sure", :method => "delete", :class => "btn"
+    .muted= faq.answer
+    %br
+
+
