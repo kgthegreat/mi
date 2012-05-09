@@ -13,10 +13,29 @@
 
   %body
     .container
-      - if notice
-        %p.notice= notice   
-      - if alert
-        %p.alert= alert
       .navbar.navbar-fixed-top
-      = yield 
+        .navbar-inner
+          .container
+            %ul.nav
+              %li
+                %a.brand{:href=>"/"}
+                  Mockinterviews.in
+            %ul.nav.pull-right 
+              %li
+                = link_to "Manage"
+              %li 
+                = link_to "Pricing"
+              %li
+                = link_to "Faq"
+              %li
+                = link_to "Help"
+              %li
+                = link_to "IQ"
+
+
+        - if notice
+          %p.notice= notice   
+        - if alert
+          %p.alert= alert
+        = yield 
 

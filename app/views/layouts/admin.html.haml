@@ -34,14 +34,14 @@
                 %ul.unstyled
                   %li{:class => current_page?(admin_domains_path) ? 'active' : ''}
                     = link_to admin_domains_path do
-                      <i class="icon-list-alt"></i>Domain
+                      <i class="icon-list-alt"></i>&nbsp;Domain
 
                   %li{:class => current_page?(admin_trainers_path) ? 'active' : ''}
                     = link_to admin_trainers_path do
-                      <i class="icon-user"></i>Trainers
+                      <i class="icon-user"></i>&nbsp;Trainers
                   %li{:class => current_page?(admin_faqs_path) ? 'active' : ''}
                     = link_to admin_faqs_path do
-                      <i class="icon-question-sign"></i>Faqs
+                      <i class="icon-question-sign"></i>&nbsp;Faqs
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}
                 = content_for?(:content) ? yield(:content) : yield
