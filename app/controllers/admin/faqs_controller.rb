@@ -1,7 +1,5 @@
 class Admin::FaqsController < Admin::AdminController
 
-  respond_to :html
-
   before_filter :find_faq, :only => [:edit,:update, :destroy]
   
   def new

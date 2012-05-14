@@ -1,5 +1,4 @@
 class Admin::TrainersController < Admin::AdminController
-  respond_to :html
 
   def create
     @trainer = Trainer.new(params[:trainer])

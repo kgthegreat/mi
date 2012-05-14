@@ -1,7 +1,5 @@
 class Admin::DomainsController < Admin::AdminController
 
-  respond_to :html
-
   before_filter :find_domain, :only => [:edit,:update, :destroy]
   
   def new
