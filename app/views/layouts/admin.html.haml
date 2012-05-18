@@ -50,10 +50,6 @@
         .span12{:style=>"margin:0 auto; width:960px; float:none"}
           .pull-left
             %p
-              &copy; Some stuffs
-          %ul.unstyled.footer-links.pull-right
-            %li= link_to 'Domains', admin_domains_path
-            %li= link_to 'Trainers', admin_trainers_path
           = yield :footer
           = javascript_include_tag 'application'
           = yield :javascript
