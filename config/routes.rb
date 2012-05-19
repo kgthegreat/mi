@@ -65,7 +65,9 @@ Mi::Application.routes.draw do
   root :to => 'home#index'
   namespace :admin do
     resources :domains
-    resources :trainers
+    resources :trainers do
+      resources :timeslots
+    end
     resources :faqs
   end
 end
