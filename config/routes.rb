@@ -66,7 +66,9 @@ Mi::Application.routes.draw do
   namespace :admin do
     resources :domains
     resources :trainers do
-      resources :timeslots
+      scope :module => :trainers do
+        resources :timeslots        
+      end
     end
     resources :faqs
   end
