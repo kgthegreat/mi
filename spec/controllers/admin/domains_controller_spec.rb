@@ -5,9 +5,9 @@ describe Admin::DomainsController do
   render_views
 
   before :each do
-    @admin_user = Admin.create!({:email=>"admin@admin.com", :password => "asd123"})
+    @admin_user = create :admin
     sign_in @admin_user
-    @domain = Domain.create!({:name=>"somename"})
+    @domain = create :domain
   end
   describe "GET new" do
     it "should render the new template" do
@@ -24,7 +24,7 @@ describe Admin::DomainsController do
       context "for normal user" do
         before :each do
           sign_out @admin_user
-          @user = User.create!(:email => "hello@hello.com", :password => "password")
+          @user = create :user
           sign_in @user
           get :index
         end
@@ -38,7 +38,7 @@ describe Admin::DomainsController do
       context "for trainers" do
         before :each do
           sign_out @admin_user
-          @trainer = Trainer.create!(:email => "hello@hello.com", :password => "password")
+          @trainer = create :trainer
           sign_in @trainer
           get :index
         end
