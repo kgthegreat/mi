@@ -41,6 +41,7 @@ Spork.prefork do
 
     # Adding devise's helpers
     config.include Devise::TestHelpers, :type => :controller
+    config.include FactoryGirl::Syntax::Methods
 
   end
   
