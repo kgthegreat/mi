@@ -23,6 +23,8 @@ gem 'haml-rails'
 group :test, :development do
   gem 'rspec-rails'
   gem 'watchr'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end
 
 group :test do
