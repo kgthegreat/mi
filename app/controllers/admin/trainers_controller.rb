@@ -19,8 +19,8 @@ class Admin::TrainersController < Admin::AdminController
   end
 
   def destroy
-    @domain = Trainer.find params[:id]
-    @domain.destroy
+    @trainer = Trainer.find params[:id]
+    @trainer.destroy
     flash[:notice] = "Entry deleted"
     redirect_to admin_trainers_path
   end
