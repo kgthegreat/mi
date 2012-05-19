@@ -68,5 +68,13 @@ describe Admin::Trainers::TimeslotsController do
     end
 
   end
+
+  describe 'DELETE destroy' do
+    it "should delete the object" do
+      lambda {delete :destroy, :trainer_id => @trainer, :id => @timeslot}.should change {@trainer.timeslots.count}.by(-1)
+      
+      
+    end
+  end
   
 end

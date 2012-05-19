@@ -1,7 +1,7 @@
 class Admin::Trainers::TimeslotsController < Admin::AdminController
 
   before_filter :find_trainer
-  before_filter :find_timeslot , :only => [:edit,:update]
+  before_filter :find_timeslot , :only => [:edit,:update, :destroy]
   def new
     @timeslot = Timeslot.new
   end
@@ -29,6 +29,11 @@ class Admin::Trainers::TimeslotsController < Admin::AdminController
     else
       respond_with @timeslot
     end
+  end
+
+  def destroy
+    @timeslot.destroy
+    redirect_to admin_trainer_timeslots_path(@trainer)
   end
 
   private
