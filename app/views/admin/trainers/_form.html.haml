@@ -4,4 +4,11 @@
 .control-group
   %label.control-label Password
   .controls= form.password_field :password
-   
+- Domain.all.each do |domain|
+  .control-group
+    %label.control-label
+    .controls
+      %label.checkbox
+        = check_box_tag "trainer[domain_ids][]", domain.id
+        = domain.name
+
