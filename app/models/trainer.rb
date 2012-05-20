@@ -6,6 +6,6 @@ class Trainer < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :domain_ids
   # attr_accessible :title, :body
-  has_many :timeslots
+  has_many :timeslots, :dependent => :delete_all
   has_and_belongs_to_many :domains  
 end
