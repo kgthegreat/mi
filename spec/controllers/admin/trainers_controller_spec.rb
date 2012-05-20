@@ -115,4 +115,31 @@ describe Admin::TrainersController do
     end
   end
 
+  describe "GET edit" do
+    before :each do
+      get :edit, :id => @trainer
+    end
+    it { should respond_with :success}
+    it { should render_template :edit}
+    it { should assign_to :trainer }
+  end
+
+  describe "PUT update" do
+    it "should update the trainer with the information provided" do
+      domain_java = create :domain, :name => "java"
+      domain_c =  create :domain, :name => "c"
+      put :update, :id => @trainer, :trainer => {:domain_ids => [domain_java.id,domain_c.id]}
+      @trainer.reload.domain_ids.should eq [domain_java.id,domain_c.id]
+    end
+
+    it "should update the domains of trainer with empty array if domain_ids not passed" do
+      domain_java = create :domain, :name => "java"
+      domain_c =  create :domain, :name => "c"
+      @trainer.domain_ids = [domain_java.id,domain_c.id]
+      put :update, :id => @trainer, :trainer => {}
+      @trainer.reload.domain_ids.should eq []
+    end
+
+  end
+
 end
