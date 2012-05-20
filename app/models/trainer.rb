@@ -4,7 +4,7 @@ class Trainer < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :domain_ids
   # attr_accessible :title, :body
   has_many :timeslots
   has_and_belongs_to_many :domains  
