@@ -10,8 +10,9 @@
             %label.control-label
             .controls
               %label.checkbox
-                = check_box_tag "trainer[domain_ids][]", domain.id
+                = check_box_tag "trainer[domain_ids][]", domain.id, @trainer.domains.include?(domain)
                 = domain.name
+        = form.hidden_field :email, :value => @trainer.email
 
         .form-actions
           = form.submit 'Update', :class => "btn btn-primary"
