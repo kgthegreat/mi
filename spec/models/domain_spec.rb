@@ -10,8 +10,14 @@ describe Domain do
       should validate_uniqueness_of :name
     end
 
-    it {should have_and_belong_to_many :trainers}
+
     
   end
+
+  context "associations" do
+    it { should have_many :schedules }
+    it {should have_and_belong_to_many :trainers}
+  end
+  
 
 end
