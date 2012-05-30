@@ -12,6 +12,16 @@ describe SchedulesController do
   end
 
   describe "POST create" do
-    
+    before :each do
+      @domain = create :domain 
+    end
+
+    it "should create the schedule" do
+      lambda {post :create, :schedule => {:domain_id => @domain}}.should change(Schedule,:count).by 1
+    end
+    it "should not create the schedule if domain id not present" do
+      lambda {post :create, :schedule => {}}.should change(Schedule,:count).by 0
+    end
+
   end
 end
