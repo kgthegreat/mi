@@ -5,6 +5,7 @@ describe Schedule do
   context "associations" do
     it { should belong_to :user }
     it { should belong_to :domain }
+    it { should have_one :timeslot }
   end
 
   context "validations" do
