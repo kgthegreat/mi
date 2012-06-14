@@ -24,7 +24,7 @@
               %li
                 = link_to "Manage"
               %li
-                = link_to "Schedule"
+                = link_to "Schedule", new_schedule_path
               %li 
                 = link_to "Pricing"
               %li
@@ -37,10 +37,10 @@
                 = link_to "Sign In as Admin", new_admin_session_path
 
 
-
-        - if notice
-          %p.notice= notice   
-        - if alert
-          %p.alert= alert
-        = yield 
+        .container
+          - if notice
+            %p.notice= notice   
+          - if alert
+            %p.alert= alert
+          = yield 
 
