@@ -1,0 +1,16 @@
+.page-header
+  All alerts
+
+=link_to "Add a alert", new_admin_alert_path, :class => "btn btn-primary"
+
+.well
+  - @alerts.each do |alert|
+    .row
+      .span5= alert.title
+      .pull-right.btn-group
+        = link_to "edit", edit_admin_alert_path(alert), :class => "btn"
+        = link_to "delete", admin_alert_path(alert), :confirm=> "Are you sure", :method => "delete", :class => "btn"
+    .muted= alert.description
+    %br
+
+
