@@ -71,7 +71,10 @@ Mi::Application.routes.draw do
       end
     end
     resources :faqs
+    resources :alerts
   end
 
   resources :schedules
+
+  resources :faqs
 end
