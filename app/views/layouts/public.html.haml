@@ -28,7 +28,7 @@
               %li 
                 = link_to "Pricing"
               %li
-                = link_to "Faq"
+                = link_to "Faqs", faqs_path
               %li
                 = link_to "Help"
               %li
@@ -37,7 +37,7 @@
                 = link_to "Sign In as Admin", new_admin_session_path
 
 
-        .container
+        .container.main
           - if notice
             %p.notice= notice   
           - if alert
