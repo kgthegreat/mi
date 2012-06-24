@@ -38,6 +38,11 @@ Spork.prefork do
     # automatically. This will be the default behavior in future versions of
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
+
+    # Adding devise's helpers
+    config.include Devise::TestHelpers, :type => :controller
+    config.include FactoryGirl::Syntax::Methods
+
   end
   
 end

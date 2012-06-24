@@ -1,0 +1,11 @@
+.page-header
+  Create a trainer
+
+.row
+  .span10
+    = form_for [:admin,@trainer], :html => { :class => "form-horizontal"} do |form|
+      %fieldset
+        = render :partial => 'form', :locals => { :form => form }
+        .form-actions
+          = form.submit 'Create', :class => "btn btn-primary"
+          = link_to 'Cancel', admin_trainers_path, :class => 'btn'

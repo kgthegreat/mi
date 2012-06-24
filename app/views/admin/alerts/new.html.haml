@@ -1,0 +1,13 @@
+.page-header
+  %h2 Create a alert
+
+.row
+  .span10
+    = form_for [:admin,@alert], :html => {:class => "form-horizontal"} do |form|
+      %fieldset
+        = render :partial => 'form', :locals => {:form => form}
+        .form-actions
+          = form.submit 'Create', :class => 'btn btn-primary'
+          = link_to 'Cancel', admin_alerts_path, :class => 'btn'
+
+

@@ -1,0 +1,61 @@
+!!! 5
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
+    %title
+      ADMIN |
+      = @current_page + " | " unless @current_page.nil?
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    /[if IE]
+      %script{:src => 'http://html5shim.googlecode.com/svn/trunk/html5.js', :type => 'text/javascript'}/
+    = yield :head
+  %body
+    .page-wrapper
+      .navbar.admin
+        .navbar-inner
+          .container{:style=>"width:960px"}
+            %ul.nav.pull-right
+              - if admin_signed_in?
+                %li
+                  %a
+                    = "email"
+                %li= link_to 'logout', destroy_admin_session_path, :method => :get
+              - else
+                %li= link_to 'login', new_admin_session_path
+      .container.main{:style=>"padding-bottom:0"}
+        - unless flash[:notice].blank?
+          #notification
+            = flash[:notice]
+        #yield
+          .container
+            .row
+              .sidebar-area{:style=>"width:18%; float:left"}
+                %ul.unstyled
+                  %li{:class => current_page?(admin_domains_path) ? 'active' : ''}
+                    = link_to admin_domains_path do
+                      <i class="icon-list-alt"></i>&nbsp;Domain
+
+                  %li{:class => current_page?(admin_trainers_path) ? 'active' : ''}
+                    = link_to admin_trainers_path do
+                      <i class="icon-user"></i>&nbsp;Trainers
+                  %li{:class => current_page?(admin_faqs_path) ? 'active' : ''}
+                    = link_to admin_faqs_path do
+                      <i class="icon-question-sign"></i>&nbsp;Faqs
+                  %li{:class => current_page?(admin_alerts_path) ? 'active' : ''}
+                    = link_to admin_alerts_path do
+                      <i class="icon-info-sign"></i>&nbsp;Alerts
+                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
+                    = link_to admin_faqs_path do
+                      <i class="icon-calendar"></i>&nbsp;Interviews
+
+              .main-area{:style=>"width:80%; float:left; padding-left:2%"}
+                = content_for?(:content) ? yield(:content) : yield
+
+      .footer
+        .span12{:style=>"margin:0 auto; width:960px; float:none"}
+          .pull-left
+            %p
+          = yield :footer
+          = javascript_include_tag 'application'
+          = yield :javascript

@@ -1,0 +1,16 @@
+.control-group
+  %label.control-label Date
+  .controls= form.text_field :date, :class => 'date_picker'
+
+.control-group
+  %label.control-label Start Date
+  .controls= form.text_field :start_time, :id => 'time3', :value => '08:00', :size => '5'
+
+.control-group
+  %label.control-label End Time
+  .controls= form.text_field :end_time, :id => 'time4', :value => '09:00', :size => '5'
+
+.control-group
+  %label.control-label Interview Type
+  .controls= form.select :interview_type, ['Telephonic','Video']
+  
