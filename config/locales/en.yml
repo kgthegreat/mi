@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      slot: "%A, %d %b"
+
+  time:
+    formats:
+      slot: "%l:%M %p"
+

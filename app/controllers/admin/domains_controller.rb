@@ -1,6 +1,4 @@
-class Admin::DomainsController < ApplicationController
-
-  respond_to :html
+class Admin::DomainsController < Admin::AdminController
 
   before_filter :find_domain, :only => [:edit,:update, :destroy]
   

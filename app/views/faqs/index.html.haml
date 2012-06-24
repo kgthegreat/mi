@@ -1,0 +1,8 @@
+.page-header
+  %h3 Faqs
+
+- @faqs.each do |faq|
+  .question
+    = faq.question
+  .answer
+    = faq.answer

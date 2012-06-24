@@ -5,7 +5,9 @@ describe Admin::DomainsController do
   render_views
 
   before :each do
-    @domain = Domain.create!({:name=>"somename"})
+    @admin_user = create :admin
+    sign_in @admin_user
+    @domain = create :domain
   end
   describe "GET new" do
     it "should render the new template" do
@@ -17,6 +19,41 @@ describe Admin::DomainsController do
       get :new
       assigns[:domain].should be_new_record
     end
+    
+    context "failure" do
+      context "for normal user" do
+        before :each do
+          sign_out @admin_user
+          @user = create :user
+          sign_in @user
+          get :index
+        end
+        it "should not be accessible to non admin user" do
+          response.should_not render_template :index
+        end
+        it "should be a redirect" do
+          response.should be_redirect
+        end
+      end
+      context "for trainers" do
+        before :each do
+          sign_out @admin_user
+          @trainer = create :trainer
+          sign_in @trainer
+          get :index
+        end
+        it "should not be accessible to non admin user" do
+          response.should_not render_template :index
+        end
+        it "should be a redirect" do
+          response.should be_redirect
+        end
+        it "should redirect to admin sign in page" do
+          response.should redirect_to new_admin_session_path
+        end
+      end
+    end
+
   end
 
   describe "POST create" do
