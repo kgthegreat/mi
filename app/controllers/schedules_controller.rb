@@ -1,5 +1,7 @@
 class SchedulesController < HomeController
 
+  before_filter :authenticate_user!
+
   def new
     respond_with @schedule = Schedule.new 
   end
