@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
-gem 'mysql2'
 gem 'devise'
 
 # Gems used only for assets and not required
@@ -25,6 +24,14 @@ group :test, :development do
   gem 'watchr'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
+  gem 'heroku'
+  gem 'foreman'
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
+  gem 'thin'
 end
 
 group :test do
