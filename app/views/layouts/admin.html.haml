@@ -42,6 +42,12 @@
                   %li{:class => current_page?(admin_faqs_path) ? 'active' : ''}
                     = link_to admin_faqs_path do
                       <i class="icon-question-sign"></i>&nbsp;Faqs
+                  %li{:class => current_page?(admin_alerts_path) ? 'active' : ''}
+                    = link_to admin_alerts_path do
+                      <i class="icon-info-sign"></i>&nbsp;Alerts
+                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
+                    = link_to admin_faqs_path do
+                      <i class="icon-calendar"></i>&nbsp;Interviews
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}
                 = content_for?(:content) ? yield(:content) : yield

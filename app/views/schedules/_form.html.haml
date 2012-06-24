@@ -1,26 +1,21 @@
 .control-group
-  %label.control-label In which domain would you like to schedule your interview in?
+  %label.control-label Choose a domain
   .controls= form.select :domain_id, Domain.all.map{|domain| [domain.name, domain.id]}
 
 
 .control-group
-  %label.control-label Select a date.
+  %label.control-label Select a date
   .controls
     = select_tag :timeslot_date, options_for_select(Timeslot.all.map{|timeslot| [timeslot.date, timeslot.date]})
     %p.help-block We schedule interview only for next some days
 
 .control-group
-  %label.control-label Select a time slot.
+  %label.control-label Select a time slot
   .controls
     = select_tag :timeslot_time, options_for_select(Timeslot.all.map{|timeslot| [timeslot.date, timeslot.date]})
     %p.help-block We will inform you of the exact time.
 
-    
 .control-group
-  %label.control-label Select a time slot
+  %label.control-label Upload your resume
   .controls
-    - Domain.find_by_name("Java").trainers.each do |trainer|
-      - trainer.timeslots.available.each do |timeslot|
-        %label.radio
-          = radio_button_tag :timeslot, timeslot.id
-          = l(timeslot.date, :format => :slot) + l(timeslot.start_time, :format => :slot)
+    = form.file_field :domain_id
