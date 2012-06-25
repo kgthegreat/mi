@@ -16,13 +16,10 @@
         .navbar-inner
           .container{:style=>"width:960px"}
             %ul.nav.pull-right
-              - if admin_signed_in?
-                %li
-                  %a
-                    = "email"
+              %li
+                %a
+                  = current_admin.email
                 %li= link_to 'logout', destroy_admin_session_path, :method => :get
-              - else
-                %li= link_to 'login', new_admin_session_path
       .container.main{:style=>"padding-bottom:0"}
         - unless flash[:notice].blank?
           #notification
