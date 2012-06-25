@@ -72,6 +72,12 @@ Mi::Application.routes.draw do
     end
     resources :faqs
     resources :alerts
+    root :to => 'domains#index'
+  end
+
+
+  resources :trainers do
+    resources :timeslots        
   end
 
   resources :schedules
