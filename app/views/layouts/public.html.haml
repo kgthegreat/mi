@@ -33,11 +33,20 @@
                 = link_to "Help"
               %li
                 = link_to "IQ"
-              - if user_signed_in?
+              - if trainer_signed_in?
+                %li
+                  = current_trainer.email
+                %li
+                  = link_to "Sign Out", destroy_user_session_path
+                %li
+                  = link_to "Manage", trainer_path(current_trainer.id)
+
+              - elsif user_signed_in?
                 %li
                   = current_user.email
                 %li
                   = link_to "Sign Out", destroy_user_session_path
+
               - else
                 %li
                   = link_to "Sign In", new_user_session_path
