@@ -13,5 +13,12 @@ describe TrainersController do
     it {should respond_with :success}
     it {should render_template :show}
     it {should assign_to :trainer}
+
+    it "should show the prohibited page when the looged in trainer tries to access any other page" do
+      trainer2 = create :trainer, :email=>"someelse@some.com"
+      get :show, :id => trainer2
+      response.should redirect_to prohibited_path
+    end
   end
+  
 end

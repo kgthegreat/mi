@@ -12,7 +12,7 @@ class TrainersController < ApplicationController
   end
   def authorised_trainer?
     unless @trainer.id == current_trainer.id
-      redirect_to root_url
+      redirect_to prohibited_path
     end  
   end
 end
