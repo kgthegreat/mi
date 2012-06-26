@@ -22,34 +22,42 @@
                   MockMyInterview.com
             %ul.nav.pull-right 
               %li
-                = link_to "Manage"
-              %li
-                = link_to "Schedule", new_schedule_path
+                = link_to "Schedule An Interview", new_schedule_path
               %li 
                 = link_to "Pricing"
               %li
                 = link_to "Faqs", faqs_path
               %li
                 = link_to "Help"
-              %li
-                = link_to "IQ"
               - if trainer_signed_in?
-                %li
+                %li.current-login
                   = current_trainer.email
                 %li
-                  = link_to "Sign Out", destroy_user_session_path
-                %li
                   = link_to "Manage", trainer_path(current_trainer.id)
+                %li
+                  = link_to "Sign Out", destroy_trainer_session_path
 
               - elsif user_signed_in?
-                %li
+                %li.current-login
                   = current_user.email
                 %li
+                  = link_to "Manage", trainer_path(current_user.id)
+                %li
                   = link_to "Sign Out", destroy_user_session_path
+
+              - elsif admin_signed_in?
+                %li.current-login
+                  = current_admin.email
+                %li
+                  = link_to "Manage", admin_domains_path
+                %li
+                  = link_to "Sign Out", destroy_admin_session_path
 
               - else
                 %li
                   = link_to "Sign In", new_user_session_path
+                %li
+                  = link_to "Register", new_user_registration_path
 
         .container.main
           - if notice
