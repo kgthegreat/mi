@@ -4,6 +4,7 @@ describe TrainersController do
 
   before :each do
     @trainer = create :trainer
+    sign_in @trainer
   end
   describe "GET show" do
     before :each do
