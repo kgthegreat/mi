@@ -77,9 +77,12 @@ Mi::Application.routes.draw do
 
 
   resources :trainers do
-    resources :timeslots        
+    scope :module => :trainers do
+      resources :timeslots        
+    end
   end
 
+  resource :prohibited, :only => [:show]
   resources :schedules
 
   resources :faqs

@@ -1,0 +1,11 @@
+.page-header
+  Create a timeslot
+
+.row
+  .span10
+    = form_for [@trainer,@timeslot], :html => { :class => "form-horizontal"} do |form|
+      %fieldset
+        = render :partial => 'form', :locals => { :form => form }
+        .form-actions
+          = form.submit 'Create', :class => "btn btn-primary"
+          = link_to 'Cancel', trainer_timeslots_path(@trainer), :class => 'btn'
