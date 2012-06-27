@@ -1,0 +1,7 @@
+- @schedules.each do |schedule|
+  .row
+    .span= schedule.timeslot.trainer.email
+    .span= schedule.timeslot.date
+    .span= schedule.user
+    .span= schedule.domain.name
+  
