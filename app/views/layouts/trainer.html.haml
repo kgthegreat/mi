@@ -16,10 +16,9 @@
         .navbar-inner
           .container{:style=>"width:960px"}
             %ul.nav.pull-right
-              %li
-                %a
-                  = current_trainer.email
-                %li= link_to 'logout', destroy_trainer_session_path, :method => :get
+              %li.current-login
+                = current_trainer.email
+              %li= link_to 'logout', destroy_trainer_session_path, :method => :get
       .container.main{:style=>"padding-bottom:0"}
         - unless flash[:notice].blank?
           #notification

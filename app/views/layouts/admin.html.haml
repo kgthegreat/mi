@@ -16,10 +16,9 @@
         .navbar-inner
           .container{:style=>"width:960px"}
             %ul.nav.pull-right
-              %li
-                %a
-                  = current_admin.email
-                %li= link_to 'logout', destroy_admin_session_path, :method => :get
+              %li.current-login
+                = current_admin.email
+              %li= link_to 'logout', destroy_admin_session_path, :method => :get
       .container.main{:style=>"padding-bottom:0"}
         - unless flash[:notice].blank?
           #notification
@@ -42,9 +41,9 @@
                   %li{:class => current_page?(admin_alerts_path) ? 'active' : ''}
                     = link_to admin_alerts_path do
                       <i class="icon-info-sign"></i>&nbsp;Alerts
-                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
-                    = link_to admin_faqs_path do
-                      <i class="icon-calendar"></i>&nbsp;Interviews
+                  %li{:class => current_page?(admin_schedules_path) ? 'active' : ''}
+                    = link_to admin_schedules_path do
+                      <i class="icon-calendar"></i>&nbsp;Schedules
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}
                 = content_for?(:content) ? yield(:content) : yield
