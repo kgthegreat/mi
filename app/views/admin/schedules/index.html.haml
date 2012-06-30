@@ -1,7 +1,12 @@
+.row
+  .span2 Interviewer
+  .span2 Date
+  .span2 Interviewee
+  .span2 Domain
 - @schedules.each do |schedule|
   .row
-    .span= schedule.timeslot.trainer.email
-    .span= schedule.timeslot.date
-    .span= schedule.user
-    .span= schedule.domain.name
+    .span2= schedule.timeslot.trainer.email
+    .span2= schedule.timeslot.date
+    .span2= schedule.user
+    .span2= schedule.domain.name
   
