@@ -26,6 +26,11 @@ describe Admin::Trainers::TimeslotsController do
     it "should not create the timeslot without the date" do
       lambda {post :create, :trainer_id => @trainer, :timeslot => {:start_time => Time.now}}.should change {@trainer.timeslots.count}.by(0)
     end
+
+    it "should redirect to trainers list" do
+      post :create, :trainer_id => @trainer, :timeslot => {:date => '19-5-2012', :start_time => Time.now}
+      response.should redirect_to admin_trainers_path
+    end
   end
 
   describe 'GET index' do
@@ -66,15 +71,29 @@ describe Admin::Trainers::TimeslotsController do
       put :update, :trainer_id => @trainer, :id => @timeslot, :timeslot => {:date => ''}
       @timeslot.reload.date.should eq date_before_update
     end
-
+    it "should be able to update only approval status" do
+      @timeslot.approved.should be_false
+      date_before_update = @timeslot.date
+      put :update, :trainer_id => @trainer, :id => @timeslot, :timeslot => {:approved => true}
+      @timeslot.reload.date.should eq date_before_update
+      @timeslot.reload.approved.should be_true
+    end
+    it "should redirect to trainers list" do
+      put :create, :trainer_id => @trainer, :id => @timeslot, :timeslot => {:date => '20-5-2012', :start_time => Time.now}
+      response.should redirect_to admin_trainers_path
+    end
+    
   end
 
   describe 'DELETE destroy' do
     it "should delete the object" do
       lambda {delete :destroy, :trainer_id => @trainer, :id => @timeslot}.should change {@trainer.timeslots.count}.by(-1)
-      
-      
     end
+    it "should redirect to trainers list" do
+      delete :destroy, :trainer_id => @trainer, :id => @timeslot
+      response.should redirect_to admin_trainers_path
+    end
+
   end
   
 end

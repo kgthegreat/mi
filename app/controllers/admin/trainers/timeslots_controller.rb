@@ -9,7 +9,7 @@ class Admin::Trainers::TimeslotsController < Admin::AdminController
   def create
     @timeslot = @trainer.timeslots.new params[:timeslot]
     if @timeslot.save
-      respond_with @timeslot, :location => admin_trainer_timeslots_path(@trainer)
+      respond_with @timeslot, :location => admin_trainers_path
     else
       respond_with @timeslot
     end
@@ -25,7 +25,7 @@ class Admin::Trainers::TimeslotsController < Admin::AdminController
 
   def update
     if @timeslot.update_attributes(params[:timeslot])
-      respond_with @timeslot, :location => admin_trainer_timeslots_path(@trainer)
+      respond_with @timeslot, :location => admin_trainers_path
     else
       respond_with @timeslot
     end
@@ -33,7 +33,7 @@ class Admin::Trainers::TimeslotsController < Admin::AdminController
 
   def destroy
     @timeslot.destroy
-    redirect_to admin_trainer_timeslots_path(@trainer)
+    redirect_to admin_trainers_path
   end
 
   private
