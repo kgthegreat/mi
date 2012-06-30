@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120617030004) do
+ActiveRecord::Schema.define(:version => 20120630105655) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -75,9 +75,10 @@ ActiveRecord::Schema.define(:version => 20120617030004) do
     t.time     "end_time"
     t.integer  "trainer_id"
     t.string   "interview_type"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "schedule_id"
+    t.boolean  "approved",       :default => false
   end
 
   add_index "timeslots", ["trainer_id"], :name => "index_timeslots_on_trainer_id"
