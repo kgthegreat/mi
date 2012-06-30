@@ -13,6 +13,20 @@ describe Timeslot do
       create :timeslot, :schedule_id => "3", :trainer => (create :trainer, :email => "soe@so.com")
       Timeslot.available.count.should eq 2
     end
+    it "should return the list of timeslots which are approved" do
+      create :timeslot
+      create :timeslot, :trainer => (create :trainer, :email => "so@so.com"), :approved => true
+      create :timeslot, :schedule_id => "3", :trainer => (create :trainer, :email => "soe@so.com")
+      Timeslot.approved.count.should eq 1
+    end
+    it "should return the list of timeslots in chronological order" do
+      ts1 = create :timeslot
+      ts2 = create :timeslot, :trainer => (create :trainer, :email => "so@so.com"), :approved => true, :date=>"21-5-2012"
+      ts3 = create :timeslot, :schedule_id => "3", :trainer => (create :trainer, :email => "soe@so.com"), :date => "20-5-2012"
+      Timeslot.chrono.count.should eq 3
+      Timeslot.chrono.should eq [ts1,  ts3, ts2]
+    end
+
   end
 end
 
