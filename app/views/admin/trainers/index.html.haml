@@ -6,24 +6,38 @@
 .well
   - @trainers.each do |trainer|
     .row
-      .span2.label.label-important= trainer.email
+      .span2.label.label-inverse= trainer.email
       .span2
         .row
           - trainer.domains.each do |domain|
-            .span.label.label-success= domain.name
+            .span.label.label-warning= domain.name
 
       .pull-right.btn-group
-        = link_to "manage timeslots", admin_trainer_timeslots_path(trainer),:class => "btn btn-primary"
-        = link_to "edit domains", edit_admin_trainer_path(trainer),:class => "btn"
-        = link_to "delete", admin_trainer_path(trainer), :confirm=> "Are you sure", :method => "delete", :class => "btn"
+        = link_to "edit domains", edit_admin_trainer_path(trainer),:class => "btn btn-primary"
+        = link_to "delete trainer", admin_trainer_path(trainer), :confirm=> "Are you sure you want to delete this trainer?", :method => "delete", :class => "btn"
 
     .well
-      - trainer.timeslots.each do |timeslot|
+      - trainer.timeslots.chrono.each do |timeslot|
         .row
           .span2= l timeslot.date, :format => :slot if timeslot.date
           .span1= l timeslot.start_time, :format => :slot if timeslot.start_time
-          .span1= l timeslot.end_time, :format => :slot if timeslot.end_time
+          .span1= l timeslot.end_time, :format => :slot if timeslot.end_time          
           .span1= timeslot.interview_type
+          - if timeslot.approved?
+            - if timeslot.schedule_id.blank?
+              .span1.label.label-success= "Available"
+            - else
+              .span1.label.label-important= "Booked"
+          .btn-group.pull-right
+            - if timeslot.approved?
+              = link_to "approved", "",:class => "btn", :disabled => true
+            - else
+              = link_to "approve", admin_trainer_timeslot_path(trainer,timeslot, :timeslot => {:approved => true}), :class => "btn btn-primary", :method => :put
+            = link_to "edit", edit_admin_trainer_timeslot_path(trainer, timeslot),:class => "btn"
+            = link_to "delete", admin_trainer_timeslot_path(trainer, timeslot), :confirm=> "Are you sure you want to delete this entity?", :method => "delete", :class => "btn"
 
+      %br      
+      .pull-right
+        = link_to "Add a timeslot", new_admin_trainer_timeslot_path(trainer), :class => "btn btn-primary"
     %br
-
+    %br  
