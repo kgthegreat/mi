@@ -5,13 +5,13 @@
 .control-group
   %label.control-label Select a date
   .controls
-    = select_tag :timeslot_date, options_for_select(Timeslot.all.map{|timeslot| [timeslot.date, timeslot.date]})
+    = select_tag :timeslot_date, options_for_select(Timeslot.available.approved.all.map{|timeslot| [timeslot.date, timeslot.date]})
     %p.help-block We schedule interview only for next some days
 
 .control-group
   %label.control-label Select a time slot
   .controls
-    = select_tag :timeslot_time, options_for_select(Timeslot.all.map{|timeslot| [timeslot.start_time, timeslot.start_time]})
+    = select_tag :timeslot_time, options_for_select(Timeslot.available.approved.all.map{|timeslot| [timeslot.start_time, timeslot.start_time]})
     %p.help-block We will inform you of the exact time.
 
 .control-group
