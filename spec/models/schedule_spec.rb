@@ -10,5 +10,7 @@ describe Schedule do
 
   context "validations" do
     it {should validate_presence_of :domain_id}
+    it {should validate_presence_of :user_id}
+    
   end
 end
