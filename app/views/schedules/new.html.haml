@@ -3,4 +3,4 @@
     = render :partial => 'form', :locals => {:form => form} 
     .form-actions
       = form.submit 'Proceed', :class => 'btn btn-primary'
-      = link_to 'Cancel', "/", :class => 'btn'
+      = link_to 'Cancel', root_url, :class => 'btn'

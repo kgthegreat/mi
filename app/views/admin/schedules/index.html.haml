@@ -7,6 +7,6 @@
   .row
     .span2= schedule.timeslot.trainer.email
     .span2= schedule.timeslot.date
-    .span2= schedule.user
+    .span2= schedule.user.email if schedule.user
     .span2= schedule.domain.name
   

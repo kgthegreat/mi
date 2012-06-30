@@ -2,7 +2,6 @@
   %label.control-label Choose a domain
   .controls= form.select :domain_id, Domain.all.map{|domain| [domain.name, domain.id]}
 
-
 .control-group
   %label.control-label Select a date
   .controls
@@ -12,7 +11,7 @@
 .control-group
   %label.control-label Select a time slot
   .controls
-    = select_tag :timeslot_time, options_for_select(Timeslot.all.map{|timeslot| [timeslot.date, timeslot.date]})
+    = select_tag :timeslot_time, options_for_select(Timeslot.all.map{|timeslot| [timeslot.start_time, timeslot.start_time]})
     %p.help-block We will inform you of the exact time.
 
 .control-group
