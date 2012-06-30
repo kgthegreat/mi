@@ -36,6 +36,10 @@ describe SchedulesController do
     it "should not create the schedule if domain id not present" do
       lambda {post :create, :schedule => {}}.should change(Schedule,:count).by 0
     end
-
+    it "should not create the schedule if user id not present" do
+      sign_out @user
+      lambda {post :create, :schedule => {:domain_id => @domain}}.should change(Schedule,:count).by 0
+    end
+    
   end
 end
