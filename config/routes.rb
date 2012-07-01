@@ -80,7 +80,10 @@ Mi::Application.routes.draw do
   resources :trainers do
     scope :module => :trainers do
       resources :timeslots
-      resources :schedules        
+      resources :schedules do
+        resource :feedback, :module => :schedules        
+      end
+
     end
   end
 
