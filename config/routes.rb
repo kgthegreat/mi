@@ -85,6 +85,8 @@ Mi::Application.routes.draw do
 
   resource :prohibited, :only => [:show]
   resources :schedules
-
+  
   resources :faqs
+
+  resources :users
 end
