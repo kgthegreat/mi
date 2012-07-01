@@ -1,0 +1,8 @@
+.row
+  .span2 Date
+  .span2 Domain
+- @schedules.each do |schedule|
+  .row
+    .span2= schedule.timeslot.date
+    .span2= schedule.domain.name
+  
