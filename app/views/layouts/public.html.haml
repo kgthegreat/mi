@@ -18,7 +18,7 @@
           .container
             %ul.nav
               %li
-                %a.brand{:href=>"/"}
+                %a.brand{:href => root_url}
                   MockMyInterview.com
             %ul.nav.pull-right 
               %li
@@ -41,7 +41,7 @@
                 %li.current-login
                   = current_user.email
                 %li
-                  = link_to "Manage", trainer_path(current_user.id)
+                  = link_to "Manage", user_path(current_user.id)
                 %li
                   = link_to "Sign Out", destroy_user_session_path
 

@@ -15,6 +15,11 @@
       .navbar.admin
         .navbar-inner
           .container{:style=>"width:960px"}
+            %ul.nav
+              %li
+                %a.brand{:href => root_url}
+                  MockMyInterview.com
+
             %ul.nav.pull-right
               %li.current-login
                 = current_admin.email

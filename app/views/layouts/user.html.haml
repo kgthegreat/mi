@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
     %title
-      TRAINER |
+      USER |
       = @current_page + " | " unless @current_page.nil?
     = stylesheet_link_tag 'application'
     = csrf_meta_tags
@@ -22,8 +22,8 @@
 
             %ul.nav.pull-right
               %li.current-login
-                = current_trainer.email
-              %li= link_to 'logout', destroy_trainer_session_path, :method => :get
+                = current_user.email
+              %li= link_to 'logout', destroy_user_session_path, :method => :get
       .container.main{:style=>"padding-bottom:0"}
         - unless flash[:notice].blank?
           #notification
@@ -33,13 +33,14 @@
             .row
               .sidebar-area{:style=>"width:18%; float:left"}
                 %ul.unstyled
-                  %li{:class => current_page?(trainer_timeslots_path(current_trainer.id)) ? 'active' : ''}
-                    = link_to trainer_timeslots_path(current_trainer.id) do
-                      <i class="icon-list-alt"></i>&nbsp;Timeslots
 
-                  %li{:class => current_page?(trainer_schedules_path(current_trainer)) ? 'active' : ''}
-                    = link_to trainer_schedules_path(current_trainer) do
+                  %li{:class => current_page?(user_schedules_path(current_user)) ? 'active' : ''}
+                    = link_to user_schedules_path(current_user) do
                       <i class="icon-calendar"></i>&nbsp;Interviews
+
+                  %li{:class => current_page?(edit_user_path(current_user)) ? 'active' : ''}
+                    = link_to edit_user_path(current_user) do
+                      <i class="icon-user"></i>&nbsp;Edit Profile
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}
                 = content_for?(:content) ? yield(:content) : yield
