@@ -79,7 +79,8 @@ Mi::Application.routes.draw do
 
   resources :trainers do
     scope :module => :trainers do
-      resources :timeslots        
+      resources :timeslots
+      resources :schedules        
     end
   end
 
@@ -88,5 +89,11 @@ Mi::Application.routes.draw do
   
   resources :faqs
 
-  resources :users
+  resources :users do
+    scope :module => :users do
+      resources :schedules      
+    end
+
+  end
+
 end

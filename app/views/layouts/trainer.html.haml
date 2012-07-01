@@ -37,8 +37,8 @@
                     = link_to trainer_timeslots_path(current_trainer.id) do
                       <i class="icon-list-alt"></i>&nbsp;Timeslots
 
-                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
-                    = link_to admin_faqs_path do
+                  %li{:class => current_page?(trainer_schedules_path(current_trainer)) ? 'active' : ''}
+                    = link_to trainer_schedules_path(current_trainer) do
                       <i class="icon-calendar"></i>&nbsp;Interviews
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}

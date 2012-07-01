@@ -1,0 +1,12 @@
+.row
+  .span2 Date
+  .span2 Time
+  .span2 Interviewee
+  .span2 Domain
+- @schedules.each do |schedule|
+  .row
+    .span2= l schedule.timeslot.date, :format => :slot
+    .span2= l schedule.timeslot.start_time, :format => :slot
+    .span2= schedule.user.email if schedule.user
+    .span2= schedule.domain.name
+  

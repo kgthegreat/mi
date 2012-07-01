@@ -34,9 +34,13 @@
               .sidebar-area{:style=>"width:18%; float:left"}
                 %ul.unstyled
 
-                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
-                    = link_to admin_faqs_path do
+                  %li{:class => current_page?(user_schedules_path(current_user)) ? 'active' : ''}
+                    = link_to user_schedules_path(current_user) do
                       <i class="icon-calendar"></i>&nbsp;Interviews
+
+                  %li{:class => current_page?(edit_user_path(current_user)) ? 'active' : ''}
+                    = link_to edit_user_path(current_user) do
+                      <i class="icon-user"></i>&nbsp;Edit Profile
 
               .main-area{:style=>"width:80%; float:left; padding-left:2%"}
                 = content_for?(:content) ? yield(:content) : yield
