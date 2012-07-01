@@ -1,0 +1,50 @@
+!!! 5
+%html
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
+    %title
+      USER |
+      = @current_page + " | " unless @current_page.nil?
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    /[if IE]
+      %script{:src => 'http://html5shim.googlecode.com/svn/trunk/html5.js', :type => 'text/javascript'}/
+    = yield :head
+  %body
+    .page-wrapper
+      .navbar.admin
+        .navbar-inner
+          .container{:style=>"width:960px"}
+            %ul.nav
+              %li
+                %a.brand{:href => root_url}
+                  MockMyInterview.com
+
+            %ul.nav.pull-right
+              %li.current-login
+                = current_user.email
+              %li= link_to 'logout', destroy_user_session_path, :method => :get
+      .container.main{:style=>"padding-bottom:0"}
+        - unless flash[:notice].blank?
+          #notification
+            = flash[:notice]
+        #yield
+          .container
+            .row
+              .sidebar-area{:style=>"width:18%; float:left"}
+                %ul.unstyled
+
+                  %li{:class => current_page?(schedules_path) ? 'active' : ''}
+                    = link_to admin_faqs_path do
+                      <i class="icon-calendar"></i>&nbsp;Interviews
+
+              .main-area{:style=>"width:80%; float:left; padding-left:2%"}
+                = content_for?(:content) ? yield(:content) : yield
+
+      .footer
+        .span12{:style=>"margin:0 auto; width:960px; float:none"}
+          .pull-left
+            %p
+          = yield :footer
+          = javascript_include_tag 'application'
+          = yield :javascript
