@@ -4,14 +4,13 @@ describe Trainers::Schedules::FeedbacksController do
   before :each do
     @trainer = create :trainer
     sign_in @trainer
-    @schedule = create :schedule
-    @feedback = Feedback.create!(:schedule_id => @schedule)
+    @feedback = create :feedback
+    @schedule = @feedback.schedule
   end
   describe "GET new" do
     before :each do
       get :new, :trainer_id => @trainer, :schedule_id => @schedule
     end
-
     it {should respond_with :success}
     it {should render_template :new}
     it {should assign_to :feedback}
@@ -25,7 +24,7 @@ describe Trainers::Schedules::FeedbacksController do
 
     it {should respond_with :success}
     it {should render_template :show}
-    it {should assign_to :feedback}
+    it {should assign_to(:feedback).with @schedule.feedback}
         
   end
 
@@ -36,7 +35,7 @@ describe Trainers::Schedules::FeedbacksController do
 
     it {should respond_with :success}
     it {should render_template :edit}
-    it {should assign_to :feedback}
+    it {should assign_to(:feedback).with @schedule.feedback}
         
   end
 
@@ -55,6 +54,7 @@ describe Trainers::Schedules::FeedbacksController do
   describe "PUT update" do
     it "should update a feedback object" do
       put :update, :trainer_id => @trainer, :schedule_id => @schedule, :feedback => {:title => "sometitle", :description => "some"}
+      @feedback.reload.title.should eq "sometitle"
     end
     it "should redirect to schedule's feedback page" do
       put :update, :trainer_id => @trainer, :schedule_id => @schedule, :feedback => {:title => "sometitle", :description => "some"}
