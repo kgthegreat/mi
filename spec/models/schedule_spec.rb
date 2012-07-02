@@ -6,6 +6,7 @@ describe Schedule do
     it { should belong_to :user }
     it { should belong_to :domain }
     it { should have_one :timeslot }
+    it { should have_one :feedback }
   end
 
   context "validations" do

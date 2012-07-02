@@ -1,0 +1,8 @@
+.page-header Feedback
+
+= form_for @feedback, :url => trainer_schedule_feedback_path(@trainer, @schedule), :html => { :class => "form-horizontal"} do |form|
+  %fieldset
+    = render :partial => 'form', :locals => { :form => form }
+    .form-actions
+      = form.submit 'Create', :class => "btn btn-primary"
+      = link_to 'Cancel', trainer_schedules_path(@trainer), :class => 'btn'
