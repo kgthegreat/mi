@@ -1,12 +1,15 @@
 .row
-  .span2 Interviewer
-  .span2 Date
-  .span2 Interviewee
-  .span2 Domain
+  %h4.span2 Interviewer
+  %h4.span2 Date
+  %h4.span2 Interviewee
+  %h4.span1 Domain
+  %h4.span2 Feedback
+%hr
 - @schedules.each do |schedule|
   .row
-    .span2= schedule.timeslot.trainer.email
-    .span2= schedule.timeslot.date
+    .span2= schedule.timeslot.trainer.email if schedule.timeslot
+    .span2= schedule.timeslot.date if schedule.timeslot
     .span2= schedule.user.email if schedule.user
-    .span2= schedule.domain.name
-  
+    .span1= schedule.domain.name
+    .span2= link_to "Review Feedback", admin_schedule_feedback_path(schedule) , :class => "btn" if schedule.feedback
+  %hr
