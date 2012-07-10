@@ -90,7 +90,9 @@ Mi::Application.routes.draw do
   end
 
   resource :prohibited, :only => [:show]
-  resources :schedules
+  resources :schedules do
+    get :timeslot_to_display, :on => :member
+  end
   
   resources :faqs
 
