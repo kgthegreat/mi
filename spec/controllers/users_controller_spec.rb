@@ -34,6 +34,13 @@ describe UsersController do
       response.should redirect_to prohibited_path
     end
   end
+  describe "PUT update" do
+    before :each do
+      put :update, :id => @user, :user => {:phone => "7787778777"}
+    end
+    it {should redirect_to root_url}
+    it {@user.reload.phone.should eq "7787778777"}
+  end
   
   
 end

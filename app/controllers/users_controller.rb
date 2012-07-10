@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   def edit
     respond_with @user
   end
-
+  def update
+    if @user.update_attributes params[:user]
+      respond_with @user, :location => root_url
+    end
+  end
   private
   def find_user
     @user = User.find params[:id]
