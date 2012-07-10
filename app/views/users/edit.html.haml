@@ -1,8 +1,14 @@
 .offset3
   = form_for @user, :html => {:class => 'form-horizontal'} do |form|
+
     .control-group
-      %label.control-label Username
-      .controls= form.text_field :email, :disabled => true
+      %label.control-label Resume
+      .controls
+        = form.file_field :resume
+        %p.help-block=  link_to "You already have a resume uploaded" , @user.resume.url
+    .control-group
+      %label.control-label Phone Number
+      .controls= form.text_field :phone
 
     .form-actions
       = form.submit 'Proceed', :class => 'btn btn-primary'
