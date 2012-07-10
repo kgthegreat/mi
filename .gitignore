@@ -5,6 +5,7 @@
 log
 public/javascripts/cache
 public/stylesheets/cache
+public/system
 .bundle/
 *.sql.gz
 *.tmp
