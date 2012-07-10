@@ -5,7 +5,8 @@
       %label.control-label Resume
       .controls
         = form.file_field :resume
-        %p.help-block=  link_to "You already have a resume uploaded" , @user.resume.url
+        - if @user.resume.exists?
+          %p.help-block=  link_to "You already have a resume uploaded" , @user.resume.url
     .control-group
       %label.control-label Phone Number
       .controls= form.text_field :phone

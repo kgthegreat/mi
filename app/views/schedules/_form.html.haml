@@ -14,4 +14,16 @@
   .controls
     = select_tag :timeslot_time, options_for_select(Timeslot.available.approved.all.map{|timeslot| [l(timeslot.start_time, :format => :slot), timeslot.start_time]})
     %p.help-block The interview will be of 30-45 mins.
-    %p.help-block We will inform you of the exact time on call.
+    %p.help-block We will inform you about the exact time by calling you up.
+
+.control-group
+  #cal
+    
+.control-group
+  %label.control-label Select a time slot
+  .controls
+    - Domain.find_by_name("Java").trainers.each do |trainer|
+      - trainer.timeslots.available.each do |timeslot|
+        %label.radio
+          = radio_button_tag :timeslot, timeslot.id
+          = l(timeslot.date, :format => :slot) + l(timeslot.start_time, :format => :slot)

@@ -20,14 +20,21 @@ class SchedulesController < HomeController
 
   def timeslot_to_display
     @timeslot_to_display = []
+    @unique_dates = []
+    @to_go = Hash.new
     domain = Domain.find(params[:id])
     domain.trainers.each do |trainer|
       trainer.timeslots.approved.available.each do |timeslot|
-        @timeslot_to_display << timeslot        
+        if !(@to_go.keys.include? timeslot.date)
+          #          @unique_dates << timeslot.date
+          @to_go[timeslot.date] = [timeslot]         
+        else
+          @to_go[timeslot.date] << timeslot
+        end  
       end
 
     end
       
-    render :json => @timeslot_to_display
+    render :json => @to_go
   end
 end
