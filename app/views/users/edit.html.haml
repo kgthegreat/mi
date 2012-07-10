@@ -1,0 +1,9 @@
+.offset3
+  = form_for @user, :html => {:class => 'form-horizontal'} do |form|
+    .control-group
+      %label.control-label Username
+      .controls= form.text_field :email, :disabled => true
+
+    .form-actions
+      = form.submit 'Proceed', :class => 'btn btn-primary'
+      = link_to 'Cancel', root_url, :class => 'btn'
