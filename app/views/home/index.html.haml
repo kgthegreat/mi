@@ -1,17 +1,9 @@
-.row
-  .span9.video
-
-
-  .span3.alerts
-    - Alert.all.each do |alert|
-      .alert.alert-info
-        .alert-title
-          = alert.title
-        .alert-description
-          = alert.description
-        .alert-date
-          = alert.date
-        .alert-venue
-          = alert.venue
-.offset4
-  = link_to "Schedule My Interview", new_schedule_path, :class => "btn btn-primary btn-large"
+.hero-unit
+  .row-fluid
+    .span9
+      hello
+    .span3
+      %h1 Are you ready for your interview?
+      %hr
+      = link_to "", :class => "btn btn-primary btn-large" do
+        Face a mock interview right now!

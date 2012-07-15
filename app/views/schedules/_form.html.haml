@@ -1,29 +1,7 @@
 .control-group
   %label.control-label Choose a domain
-  .controls= form.select :domain_id, Domain.all.map{|domain| [domain.name, domain.id]}
+  .controls= form.select :domain_id, Domain.all.map{|domain| [domain.name, domain.id]}.insert(0,["",""])
 
 .control-group
-  %label.control-label Select a date
-  .controls
-    = select_tag :timeslot_date, options_for_select(Timeslot.available.approved.all.map{|timeslot| [l(timeslot.date, :format => :slot), timeslot.date]})
-    %p.help-block Select from the available dates for the next two
-    %p.help-block weeks for the domain you have selected.
-
-.control-group
-  %label.control-label Available time slots
-  .controls
-    = select_tag :timeslot_time, options_for_select(Timeslot.available.approved.all.map{|timeslot| [l(timeslot.start_time, :format => :slot), timeslot.start_time]})
-    %p.help-block The interview will be of 30-45 mins.
-    %p.help-block We will inform you about the exact time by calling you up.
-
-.control-group
-  #cal
-    
-.control-group
-  %label.control-label Select a time slot
-  .controls
-    - Domain.find_by_name("Java").trainers.each do |trainer|
-      - trainer.timeslots.available.each do |timeslot|
-        %label.radio
-          = radio_button_tag :timeslot, timeslot.id
-          = l(timeslot.date, :format => :slot) + l(timeslot.start_time, :format => :slot)
+  #cal{:style=>"display:none;"}
+    Choose a slot.

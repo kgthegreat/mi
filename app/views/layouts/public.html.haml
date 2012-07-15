@@ -12,57 +12,66 @@
     = yield :head
 
   %body
-    .container
-      .navbar.navbar-fixed-top
-        .navbar-inner
-          .container
-            %ul.nav
-              %li
-                %a.brand{:href => root_url}
-                  MockMyInterview.com
-            %ul.nav.pull-right 
-              %li
-                = link_to "Schedule An Interview", new_schedule_path
-              %li 
-                = link_to "Pricing"
-              %li
-                = link_to "Faqs", faqs_path
-              %li
-                = link_to "Help"
-              - if trainer_signed_in?
-                %li.current-login
-                  = current_trainer.email
-                %li
-                  = link_to "Manage", trainer_path(current_trainer.id)
-                %li
-                  = link_to "Sign Out", destroy_trainer_session_path
 
-              - elsif user_signed_in?
-                %li.current-login
-                  = current_user.email
-                %li
-                  = link_to "Manage", user_path(current_user.id)
-                %li
-                  = link_to "Sign Out", destroy_user_session_path
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %ul.nav
+            %li
+              %a.brand{:href => root_url}
+                MockMyInterview.com
+          %ul.nav.pull-right 
+            %li 
+              = link_to "Pricing"
+              
+            %li
+              = link_to "FAQs", faqs_path
+            - if trainer_signed_in?
+              %li.current-login
+                = current_trainer.email
+              %li
+                = link_to "Manage", trainer_path(current_trainer.id)
+              %li
+                = link_to "Sign Out", destroy_trainer_session_path
 
-              - elsif admin_signed_in?
-                %li.current-login
-                  = current_admin.email
-                %li
-                  = link_to "Manage", admin_domains_path
-                %li
-                  = link_to "Sign Out", destroy_admin_session_path
+            - elsif user_signed_in?
+              %li.current-login
+                = current_user.email
+              %li
+                = link_to "Manage", user_path(current_user.id)
+              %li
+                = link_to "Sign Out", destroy_user_session_path
 
-              - else
-                %li
-                  = link_to "Sign In", new_user_session_path
-                %li
-                  = link_to "Register", new_user_registration_path
+            - elsif admin_signed_in?
+              %li.current-login
+                = current_admin.email
+              %li
+                = link_to "Manage", admin_domains_path
+              %li
+                = link_to "Sign Out", destroy_admin_session_path
 
-        .container.main
-          - if notice
-            %p.notice= notice   
-          - if alert
-            %p.alert= alert
-          = yield 
+            - else
+              %li
+                = link_to "Sign In", new_user_session_path
+              %li
+                = link_to "Register", new_user_registration_path
+
+    .main
+      - if notice
+        %p.notice= notice   
+      - if alert
+        %p.alert= alert
+      = yield 
+    .footer
+      .navbar.container
+        %ul.nav#bottom
+          %li 
+            = link_to "How does it work?"
+          %li 
+            = link_to "About Our Interviewers"
+          %li 
+            = link_to "Contact Us"
+          %li 
+            = link_to "About Us"
+
 

@@ -8,9 +8,10 @@ class SchedulesController < HomeController
 
   def create
     @schedule = Schedule.new params[:schedule].merge(:user_id => current_user.id)
-    if params[:timeslot_time] && params[:timeslot_date]
-      @schedule.timeslot = Timeslot.find_by_date_and_start_time(params[:timeslot_date], params[:timeslot_time].chomp(" UTC"))
-    end
+#    if params[:timeslot_time] && params[:timeslot_date]
+ #     @schedule.timeslot = Timeslot.find_by_date_and_start_time(params[:timeslot_date], params[:timeslot_time].chomp(" UTC"))
+    #  end
+    @schedule.timeslot = Timeslot.find(params[:timeslot])
     if @schedule.save
       respond_with @schedule, :location => edit_user_path(current_user, :schedule => true)
     else
@@ -19,22 +20,18 @@ class SchedulesController < HomeController
   end
 
   def timeslot_to_display
-    @timeslot_to_display = []
-    @unique_dates = []
     @to_go = Hash.new
     domain = Domain.find(params[:id])
     domain.trainers.each do |trainer|
       trainer.timeslots.approved.available.each do |timeslot|
         if !(@to_go.keys.include? timeslot.date)
-          #          @unique_dates << timeslot.date
           @to_go[timeslot.date] = [timeslot]         
         else
           @to_go[timeslot.date] << timeslot
         end  
       end
-
     end
       
-    render :json => @to_go
+    render :json => Hash[@to_go.sort]
   end
 end

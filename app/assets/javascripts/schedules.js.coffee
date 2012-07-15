@@ -14,6 +14,7 @@ $(document).ready () ->
                   success: (data) ->
                         #ddl.html("")
                         cal = $('#cal')
+                        cal.show()
                         cal.html("")    
                         console.log(data)
 
@@ -42,7 +43,7 @@ $(document).ready () ->
 
         createRadioButtonTag = ( box, value, name, label) ->
 
-                radioInput = '<input type="radio" name="' + name + ' value="' + value + '">'
+                radioInput = '<input type="radio" name="' + name + '" value="' + value + '">'
                 labelSection = document.createElement("label")
                 labelSection.setAttribute "class", "radio"
                 time = new Date(label)
