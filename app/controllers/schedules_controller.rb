@@ -11,7 +11,7 @@ class SchedulesController < HomeController
 #    if params[:timeslot_time] && params[:timeslot_date]
  #     @schedule.timeslot = Timeslot.find_by_date_and_start_time(params[:timeslot_date], params[:timeslot_time].chomp(" UTC"))
     #  end
-    @schedule.timeslot = Timeslot.find(params[:timeslot])
+    @schedule.timeslot = Timeslot.find(params[:timeslot]) if params[:timeslot]
     if @schedule.save
       respond_with @schedule, :location => edit_user_path(current_user, :schedule => true)
     else
