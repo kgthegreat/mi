@@ -18,9 +18,9 @@
         .container
           %ul.nav
             %li
-              %a.brand{:href => root_url}
-                MockMyInterview.com
-          %ul.nav.pull-right 
+              %a.brand#logo{:href => root_url}
+                = image_tag "blue_tie_cropped_scaled.png"
+          %ul.nav.pull-right#right-nav 
             %li 
               = link_to "Pricing"
               
