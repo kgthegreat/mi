@@ -1,9 +1,49 @@
-.hero-unit
+.row
+  .three.span
+    %h1 Three Steps To Get Interview Ready
+
+  .arrow-right.span
+    
+%hr
+%br  
+%br
+.herow-unit
   .row-fluid
     .span9
-      hello
+      .row-fluid
+        .span4
+          .boxy
+            %span.label.label-warning.count 1        
+            .pull-right= image_tag "click.png"
+
+        .span4
+          .boxy
+            %span1.label.label-warning.count 2        
+            .pull-right= image_tag "phone.png"
+        .span4
+          .boxy
+            %span1.label.label-warning.count 3        
+            .pull-right= image_tag "feed.png"
+      .row-fluid
+        .span4
+          .boxy-bottom
+            %h2 Choose a domain, book a convenient timeslot.
+            %br
+            %br
+                        
+        .span4
+          .boxy-bottom
+            %h2 Get interviewed on phone by a domain expert from the industry.
+        .span4
+          .boxy-bottom
+            %h2 Receive detailed feedback and tips to perform better.
+
     .span3
-      %h1 Are you ready for your interview?
-      %hr
-      = link_to "", :class => "btn btn-primary btn-large" do
-        Face a mock interview right now!
+      .tagline
+        %h1 Are you ready for that interview?
+        %hr
+      .face-interview    
+        .pull-right
+          = link_to "", :class => "btn btn-primary btn-large" do
+            Face a mock interview right now!
+

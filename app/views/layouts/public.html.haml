@@ -13,13 +13,13 @@
 
   %body
 
-    .navbar.navbar-fixed-top
+    .navbar
       .navbar-inner
         .container
           %ul.nav
             %li
               %a.brand#logo{:href => root_url}
-                = image_tag "blue_tie_com_60.png"
+                = image_tag "light_blue_tie_small_1.png"
           %ul.nav.pull-right#right-nav 
             %li 
               = link_to "Pricing"
@@ -57,21 +57,23 @@
                 = link_to "Register", new_user_registration_path
 
     .main
-      - if notice
-        %p.alert= notice   
-      - if alert
-        %p.alert= alert
-      = yield 
-    .footer
-      .navbar.container
-        %ul.nav#bottom
-          %li 
-            = link_to "How does it work?"
-          %li 
-            = link_to "About Our Interviewers"
-          %li 
-            = link_to "Contact Us"
-          %li 
-            = link_to "About Us"
+      .container
+        - if notice
+          %p.alert= notice   
+        - if alert
+          %p.alert= alert
+        = yield
+        .pushing
+  %footer.footer
+    .navbar.container
+      %ul.nav#bottom
+        %li 
+          = link_to "How does it work?"
+        %li 
+          = link_to "About Our Interviewers"
+        %li 
+          = link_to "See Sample Feedback"
+        %li 
+          = link_to "Contact Us"
 
 

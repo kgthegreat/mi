@@ -3,5 +3,9 @@
   .controls= form.select :domain_id, Domain.all.map{|domain| [domain.name, domain.id]}.insert(0,["",""])
 
 .control-group
-  #cal{:style=>"display:none;"}
-    Choose a slot.
+  %label.control-label#message{:style=>"display:none;"} Choose a slot
+  .controls#cal
+    
+.form-actions{:style=>"display:none;"}
+  = form.submit 'Proceed', :class => 'btn btn-primary'
+  = link_to 'Cancel', root_url, :class => 'btn'
