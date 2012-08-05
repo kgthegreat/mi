@@ -14,7 +14,9 @@ $(document).ready () ->
                   success: (data) ->
                         #ddl.html("")
                         cal = $('#cal')
-                        cal.show()
+                        message = $('#message')
+                        message.show()
+                       
                         cal.html("")    
                         console.log(data)
 
@@ -31,7 +33,7 @@ $(document).ready () ->
                                         box = $(fid)
                                         console.log(fid)                                                                        
                                         createRadioButtonTag(box, y.id, "timeslot", y.start_time)
-
+                        $('.form-actions').show()                
 
 
 
@@ -52,10 +54,14 @@ $(document).ready () ->
                 box.append(labelSection)
 
         createDiv = (i, cal) ->
+                title = document.createElement("div")
+                title.setAttribute "class", "cal-title"
+                title.textContent = i
                 d = document.createElement("div")
                 d.setAttribute "class", "span2 calendar-date"
-                d.setAttribute "id", i
-                d.textContent = i
+                id = i.split(",")
+                d.setAttribute "id", id[0]
+                d.appendChild(title)
                 cal.append(d)
 
         formatTime = (time) ->

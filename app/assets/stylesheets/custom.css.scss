@@ -2,34 +2,97 @@ $navbarLinkColor: #fff;
 $linkColor: #3399ff;
 @import "bootstrap";
 
-.hero-unit {
-
-height : 350px;
-#margin-right : 15px;
-#margin-left : 15px;
-margin-bottom : 15px;
-background : #333333;
+.herow-unit {
+    margin-right: 20px;
+    margin-left: 10px;
+#    margin-top: 20px;
+    height : 450px;
+    #margin-right : 15px;
+    #margin-left : 15px;
+    margin-bottom : 15px;
+    #background : #0d2640;
 
 }
-.hero-unit h1
-{
-color : #ffffff;
+
+.boxy {
+      margin-bottom: 0px;
+    height : 100px;
+//    background : #3399ff;
+}
+
+.boxy-bottom {
+    margin-top : -25px;
+    height : 210px;
+    background : #0d2640;
+    color : #f5f5f5 !important;
+}
+
+.boxy-bottom h2{
+    color : #f5f5f5 !important;
+    font-size: 30px;
+    letter-spacing: -1px;
+    line-height: 1;
+
+}
+
+.alerts {
+background : #3399ff;
+}
+.count{
+    margin-top : 10px;
+    color : #f5f5f5 !important;
+    font-size: 90px;
+}
+.three {
+
+    background: #3399ff;
+    width : 530px;
+
+}
+.three h1 {
+    color : #f5f5f5;
+    font-size: 30px;
+}
+
+.tagline {
+    #margin-top : 50px;
+    background : #3399ff;
+    width : 250px;
+}
+.tagline h1 {
+    font-size: 51px;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 0;
+    color: #f5f5f5;
+}
+.face-interview {
+    width : 250px;
 }
 
 .main {
 
-margin-top : 90px;
+    margin-top : 90px;
 
 }
 
+.arrow-right {
+    width: 0; 
+    height: 0; 
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+	
+    border-left: 18px solid #3399ff;
+    margin-left: 0px;
+}
 .question {
 
-background : #E3CFD7;
-margin-top : 5px;
+    background : #E3CFD7;
+    margin-top : 5px;
 }
 
 .active {
-background : #E3CFD7;
+    background : #E3CFD7;
 }
 
 .current-login {
@@ -40,38 +103,67 @@ background : #E3CFD7;
     text-decoration: none;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-
+#cal{
+height: 330px;
+}
 .calendar-date {
-
-height : 100px;
-border : 1px 1px 1px 1px;
-background : #DDDDDD;
+    height : 100px;
+    border : 2px 2px 2px 2px;
+    background :  #8FBDFF;//#7fbfff;//#ffb333; //#b27000; //#4ca6ff;
+    margin : 5px 5px 5px 5px;
+    padding : 0px 5px 5px 5px;	
+    overflow : auto;
+    color : #f5f5f5 !important; 
+    font-weight: bold;
 
 }
-.navbar-inner {
-height:60px;
-margin-top: 15px;
-background : #3399FF;
+.cal-title {
+    #padding : 0px 0px 5px 15px; 
+    background : #0d2640;
+    margin-bottom : 5px;
+    color : #f5f5f5 !important; 
+    font-weight: bold;
+}
 
+.navbar-inner {
+    height:60px;
+    margin-top: 15px;
+    background : #0d2640;//#3399ff;
 
 }
 
 #right-nav
 {
-padding-top :8px;
+    padding-top :8px;
 }
 
 #logo
 {
-#position :absolute;
-margin : 0px 0px 0px 0px;
-padding : 0px 0px 0px 0px;
+    #position :absolute;
+    margin : 0px 0px 0px 0px;
+    padding : 0px 0px 0px 0px;
 }
-.footer {
-background : #3399ff;
-height : 105px;
+footer.footer {
+    background : #0d2640;//#3399ff;
+    height : 65px;
 }
 
 #bottom {
-margin-top : 30px;
+    margin-top : 13px;
+}
+
+html, body {
+    height: 100%;
+}
+.container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+}
+.main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -1*(177px);
 }

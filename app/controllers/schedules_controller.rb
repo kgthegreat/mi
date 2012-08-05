@@ -24,10 +24,12 @@ class SchedulesController < HomeController
     domain = Domain.find(params[:id])
     domain.trainers.each do |trainer|
       trainer.timeslots.approved.available.each do |timeslot|
-        if !(@to_go.keys.include? timeslot.date)
-          @to_go[timeslot.date] = [timeslot]         
+        d = Time.parse(timeslot.date.to_s)
+        d = d.strftime("%d-%b-%Y, %a")
+        if !(@to_go.keys.include? d)
+          @to_go[d] = [timeslot]         
         else
-          @to_go[timeslot.date] << timeslot
+          @to_go[d] << timeslot
         end  
       end
     end
