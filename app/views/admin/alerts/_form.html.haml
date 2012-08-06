@@ -3,7 +3,7 @@
   .controls= form.text_field :title
 .control-group
   %label.control-label Description
-  .controls= form.text_field :description
+  .controls= form.text_area :description, :rows => '5'
 .control-group
   %label.control-label Date
   .controls= form.text_field :date, :class => 'date_picker'
